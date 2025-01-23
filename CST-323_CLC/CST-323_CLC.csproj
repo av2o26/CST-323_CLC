@@ -7,4 +7,9 @@
     <RootNamespace>CST_323_CLC</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Business\" />
+    <Folder Include="Services\DataAccess\" />
+  </ItemGroup>
+
 </Project>
