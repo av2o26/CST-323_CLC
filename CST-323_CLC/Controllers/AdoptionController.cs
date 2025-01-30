@@ -8,5 +8,10 @@ namespace CST_323_CLC.Controllers
         {
             return View();
         }
+
+        public IActionResult Adopt()
+        {
+            return View();
+        }
     }
 }

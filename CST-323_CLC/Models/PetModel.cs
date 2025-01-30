@@ -3,7 +3,6 @@
     public class PetModel
     {
         // Properties
-        public String Species { get; set; }
         public String Breed { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }
@@ -18,15 +17,13 @@
         /// <summary>
         /// Parameterized Constructor
         /// </summary>
-        /// <param name="species"></param>
         /// <param name="breed"></param>
         /// <param name="name"></param>
         /// <param name="description"></param>
         /// <param name="price"></param>
         /// <param name="adoptionStatus"></param>
-        public PetModel(string species, string breed, string name, string description, double price, bool adoptionStatus)
+        public PetModel(string breed, string name, string description, double price, bool adoptionStatus)
         {
-            Species = species;
             Breed = breed;
             Name = name;
             Description = description;
