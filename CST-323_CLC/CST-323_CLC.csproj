@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Services\Business\" />
     <Folder Include="Services\DataAccess\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
 </Project>
