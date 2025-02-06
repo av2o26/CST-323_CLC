@@ -1,6 +1,11 @@
+using CST_323_CLC.Models;
+using CST_323_CLC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<PetDatabaseSettings>(builder.Configuration.GetSection("PetDatabase"));
+builder.Services.AddSingleton<PetService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

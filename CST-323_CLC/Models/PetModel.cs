@@ -1,34 +1,46 @@
-﻿namespace CST_323_CLC.Models
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
+
+namespace CST_323_CLC.Models
 {
     public class PetModel
     {
-        // Properties
-        public String Species { get; set; }
-        public String Breed { get; set; }
-        public String Name { get; set; }
-        public String Description { get; set; }
+        // Propeties
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+
+        [BsonElement("name")]
+        [Required]
+        public string Name { get; set; }
+
+        [BsonElement("species")]
+        [Required]
+        public string Species { get; set; }
+
+        [BsonElement("breed")]
+        [Required]
+        public string Breed { get; set; }
+
+        [BsonElement("description")]
+        [Required]
+        public string Description { get; set; }
+
+        [BsonElement("price")]
+        [Required]
         public double Price { get; set; }
+
+        [BsonElement("isAdopted")]
+        [Required]
         public bool AdoptionStatus { get; set; }
 
-        /// <summary>
-        /// Default Constructor
-        /// </summary>
-        public PetModel() {}
-
-        /// <summary>
-        /// Parameterized Constructor
-        /// </summary>
-        /// <param name="species"></param>
-        /// <param name="breed"></param>
-        /// <param name="name"></param>
-        /// <param name="description"></param>
-        /// <param name="price"></param>
-        /// <param name="adoptionStatus"></param>
-        public PetModel(string species, string breed, string name, string description, double price, bool adoptionStatus)
+        public PetModel(string id, string name, string species, string breed, string description, double price, bool adoptionStatus)
         {
+            Id = id;
+            Name = name;
             Species = species;
             Breed = breed;
-            Name = name;
             Description = description;
             Price = price;
             AdoptionStatus = adoptionStatus;
