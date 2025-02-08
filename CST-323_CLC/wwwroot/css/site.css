@@ -62,8 +62,8 @@ body {
 }
 
 .btn-center {
-    padding-top: 200px;
-    width: 30%;
+    margin-top: 120px;
+    width: 40%;
     background: transparent;
     color: white;
     backdrop-filter: blur(35px);
