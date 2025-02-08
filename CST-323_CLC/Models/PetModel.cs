@@ -1,12 +1,12 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using System.ComponentModel.DataAnnotations;
 
 namespace CST_323_CLC.Models
 {
     public class PetModel
     {
-        // Propeties
+        // Properties
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
@@ -28,22 +28,13 @@ namespace CST_323_CLC.Models
         public string Description { get; set; }
 
         [BsonElement("price")]
+        [DataType(DataType.Currency)]
         [Required]
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         [BsonElement("isAdopted")]
+        [Display(Name = "Available?")]
         [Required]
         public bool AdoptionStatus { get; set; }
-
-        public PetModel(string id, string name, string species, string breed, string description, double price, bool adoptionStatus)
-        {
-            Id = id;
-            Name = name;
-            Species = species;
-            Breed = breed;
-            Description = description;
-            Price = price;
-            AdoptionStatus = adoptionStatus;
-        }
     }
 }
