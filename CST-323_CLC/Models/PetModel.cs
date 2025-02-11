@@ -45,5 +45,9 @@ namespace CST_323_CLC.Models
             Price = price;
             AdoptionStatus = adoptionStatus;
         }
+
+        public PetModel()
+        {
+        }
     }
 }

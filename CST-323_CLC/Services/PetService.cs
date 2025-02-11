@@ -1,6 +1,7 @@
 ﻿using CST_323_CLC.Models;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using System.Collections.Generic;
 
 namespace CST_323_CLC.Services
 {
@@ -18,6 +19,23 @@ namespace CST_323_CLC.Services
         public List<PetModel> GetPets()
         {
             return pets.Find(pet => true).ToList();
+        }
+
+        public PetModel FindPet(string id)
+        {
+            PetModel foundPet = new PetModel();
+
+            List<PetModel> pets = GetPets();
+
+            foreach(PetModel pet in pets)
+            {
+                if(pet.Id == id)
+                {
+                    foundPet = pet;
+                }
+            }
+
+            return foundPet;
         }
 
         public PetModel CreatePet(PetModel pet)

@@ -25,7 +25,7 @@ namespace CST_323_CLC.Controllers
 
         public IActionResult UpdatePet(string id)
         {
-            return View();
+            return View(petService.);
         }
 
     }
