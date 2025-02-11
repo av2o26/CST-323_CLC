@@ -4,6 +4,8 @@ using CST_323_CLC.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<UserDatabaseSettings>(builder.Configuration.GetSection("UserDatabase"));
+builder.Services.AddSingleton<UserService>();
 builder.Services.Configure<PetDatabaseSettings>(builder.Configuration.GetSection("PetDatabase"));
 builder.Services.AddSingleton<PetService>();
 builder.Services.AddControllersWithViews();
