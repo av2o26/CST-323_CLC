@@ -12,29 +12,25 @@ namespace CST_323_CLC.Services.Business
             this.userDao = userDao;
         }
 
-        public UserModel GetByUsername(string username)
-        {
-            userDao.GetUserByUsername(username);
-            return userDao.GetUserByUsername(username);
-        }
-
+        /// <summary>
+        /// Create a user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public UserModel AddUser(UserModel user)
         {
             return userDao.CreateUser(user);
         }
 
         /// <summary>
-        /// Verify the password to a username
+        /// Verify a user's credentials
         /// </summary>
-        /// <param name="user"></param>
         /// <param name="username"></param>
+        /// <param name="password"></param>
         /// <returns></returns>
-        public bool VerifyInformation(UserModel user, string username)
+        public bool VerifyInformation(string username, string password)
         {
-            if(user.Username != username)
-                return false;
-
-            return true;
+            return userDao.CheckUsernameAndPass(username, password);
         }
     }
 }

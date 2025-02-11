@@ -2,34 +2,69 @@
 using CST_323_CLC.Services.Business;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using System.Drawing;
 
 namespace CST_323_CLC.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUserService userService;
+        private readonly IUserService _userService;
 
         public UserController(IUserService userService)
         {
-            this.userService = userService;
+            _userService = userService;
         }
 
-        public IActionResult Register()
+        /// <summary>
+        /// GET: Go to registration page
+        /// </summary>
+        /// <returns>Register View</returns>
+        public ActionResult Register()
         {
             return View();
         }
 
-        public IActionResult Login()
+        /// <summary>
+        /// POST: Register a user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>Login View</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(UserModel user)
+        {
+            ModelState.Remove("Id");
+            if (ModelState.IsValid)
+            {
+                _userService.AddUser(user);
+                return RedirectToAction("Login");
+            }
+            else
+                return View(user);
+        }
+
+        /// <summary>
+        /// GET: Go to login page
+        /// </summary>
+        /// <returns>Login View</returns>
+        public ActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// POST: Log into an account
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Login(UserModel user)
         {
-            string username = userService.GetByUsername(user.Username).ToString();
-            userService.VerifyInformation(user, username);
+            if (_userService.VerifyInformation(user.Username, user.Password))
+            {
+                return RedirectToAction("Index", "Pet");
+            }
 
             return View();
         }

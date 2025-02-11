@@ -1,5 +1,6 @@
 ﻿using CST_323_CLC.Models;
 using CST_323_CLC.Services.Business;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CST_323_CLC.Controllers
@@ -92,6 +93,7 @@ namespace CST_323_CLC.Controllers
         }
 
         /// <summary>
+
         /// GET: Let user remove a pet
         /// </summary>
         /// <param name="id"></param>
