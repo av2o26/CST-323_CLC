@@ -4,11 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="header text-center">Our Dogs!</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<div class="pet-wrapper">
 <table class="table">
     <thead>
         <tr>
@@ -62,10 +64,11 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+</div>
