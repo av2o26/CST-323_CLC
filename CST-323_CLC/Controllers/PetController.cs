@@ -25,7 +25,7 @@ namespace CST_323_CLC.Controllers
 
         public IActionResult UpdatePet(string id)
         {
-            return View(petService.GetPets().Find(pet => pet.Id == id));
+            return View();
         }
 
     }
