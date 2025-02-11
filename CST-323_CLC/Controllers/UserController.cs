@@ -1,5 +1,5 @@
 ﻿using CST_323_CLC.Models;
-using CST_323_CLC.Services;
+using CST_323_CLC.Services.Business;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 
@@ -7,16 +7,11 @@ namespace CST_323_CLC.Controllers
 {
     public class UserController : Controller
     {
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public UserController(UserService userService)
+        public UserController(IUserService userService)
         {
             this.userService = userService;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
         }
 
         public IActionResult Register()
@@ -24,27 +19,19 @@ namespace CST_323_CLC.Controllers
             return View();
         }
 
-        public IActionResult AddUser(UserModel user)
+        public IActionResult Login()
         {
-            user.Id = ObjectId.GenerateNewId().ToString();
-
-            userService.CreateUser(user);
-
-            return RedirectToAction("Index", "Login");
+            return View();
         }
 
-        public IActionResult CheckCredentials(string username, string password)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(UserModel user)
         {
-            UserModel foundUser = userService.FindUser(username);
+            string username = userService.GetByUsername(user.Username).ToString();
+            userService.VerifyInformation(user, username);
 
-            if (foundUser.Password == password)
-            {
-                return RedirectToAction("Index", "Pet");
-            }
-            else
-            {
-                return RedirectToAction("Index", "Login");
-            }
+            return View();
         }
     }
 }

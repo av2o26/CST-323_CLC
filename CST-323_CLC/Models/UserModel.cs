@@ -34,21 +34,5 @@ namespace CST_323_CLC.Models
         [BsonElement("password")]
         [Required]
         public string Password { get; set; }
-
-        public UserModel()
-        {
-        }
-
-        public UserModel(string id, string fName, string lName, int phone, string email, string username, string password)
-        {
-            Id = id;
-            FirstName = fName;
-            LastName = lName;
-            Phone = phone;
-            Email = email;
-            Username = username;
-            Password = password;
-
-        }
     }
 }

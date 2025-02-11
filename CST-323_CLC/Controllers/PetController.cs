@@ -1,55 +1,125 @@
 ﻿using CST_323_CLC.Models;
-using CST_323_CLC.Services.Data_Access;
-using Microsoft.AspNetCore.Http;
+using CST_323_CLC.Services.Business;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
 
 namespace CST_323_CLC.Controllers
 {
     public class PetController : Controller
     {
-        private readonly PetDAO petService;
+        private readonly IPetService petService;
 
-        public PetController(PetDAO petService)
+        public PetController(IPetService petService)
         {
             this.petService = petService;
         }
 
-        public IActionResult Index()
+        /// <summary>
+        /// GET: Display list of pets
+        /// </summary>
+        /// <returns>List View</returns>
+        public ActionResult Index()
         {
-            return View(petService.GetPets());
+            return View(petService.GetAll());
         }
 
-        public IActionResult DeletePet(string id)
+        /// <summary>
+        /// GET: Display details of a specific pet
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Detail View</returns>
+        public ActionResult Details(string id)
         {
-            petService.DeletePet(id);
-            return RedirectToAction("Index");
+            PetModel pet = petService.GetById(id);
+            return View(pet);
         }
 
-        public IActionResult EditPet(string id)
+        /// <summary>
+        /// GET: Let user create a pet
+        /// </summary>
+        /// <returns>Create View</returns>
+        public ActionResult Create()
         {
-            return View(petService.FindPet(id));
+            return View();
         }
 
-        public IActionResult UpdatePet(PetModel pet)
+        /// <summary>
+        /// POST: Insert pet into database
+        /// </summary>
+        /// <param name="pet"></param>
+        /// <returns>List View</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PetModel pet)
         {
-            petService.UpdatePet(pet.Id, pet);
-
-            return RedirectToAction("Index");
+            ModelState.Remove("Id");
+            if (ModelState.IsValid)
+            {
+                petService.Create(pet);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+                return View(pet);
         }
 
-        public IActionResult CreatePet()
+        /// <summary>
+        /// GET: Let user edit a pet's information
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Edit View</returns>
+        public ActionResult Edit(string id)
         {
-            return View(new PetModel());
+            PetModel pet = petService.GetById(id);
+            return View(pet);
         }
 
-        public IActionResult AddPet(PetModel pet)
+        /// <summary>
+        /// POST: Change a pet's information in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="pet"></param>
+        /// <returns>List View</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(string id, PetModel pet)
         {
-            pet.Id = ObjectId.GenerateNewId().ToString();
+            if (ModelState.IsValid)
+            {
+                petService.Update(id, pet);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+                return View(pet);
+        }
 
-            petService.CreatePet(pet);
+        /// <summary>
+        /// GET: Let user remove a pet
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Delete View</returns>
+        public ActionResult Delete(string id)
+        {
+            PetModel pet = petService.GetById(id);
+            return View(pet);
+        }
 
-            return RedirectToAction("Index");
+        /// <summary>
+        /// POST: Remove a pet from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>List View</returns>
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmDelete(string id)
+        {
+            try
+            {
+                petService.Delete(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
     }

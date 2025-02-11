@@ -34,20 +34,5 @@ namespace CST_323_CLC.Models
         [BsonElement("isAdopted")]
         [Required]
         public bool AdoptionStatus { get; set; }
-
-        public PetModel(string id, string name, string species, string breed, string description, double price, bool adoptionStatus)
-        {
-            Id = id;
-            Name = name;
-            Species = species;
-            Breed = breed;
-            Description = description;
-            Price = price;
-            AdoptionStatus = adoptionStatus;
-        }
-
-        public PetModel()
-        {
-        }
     }
 }

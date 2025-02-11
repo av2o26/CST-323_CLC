@@ -1,4 +1,4 @@
-﻿namespace CST_323_CLC.Models
+﻿namespace CST_323_CLC.Services.Utilities
 {
     public class UserDatabaseSettings
     {
