@@ -2,9 +2,14 @@
 
 namespace CST_323_CLC.Controllers
 {
-    public class RegisterController : Controller
+    public class UserController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
         {
             return View();
         }
