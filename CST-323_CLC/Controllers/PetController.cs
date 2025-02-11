@@ -1,6 +1,7 @@
 ﻿using CST_323_CLC.Models;
 using CST_323_CLC.Services;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 
 namespace CST_323_CLC.Controllers
 {
@@ -32,6 +33,20 @@ namespace CST_323_CLC.Controllers
         public IActionResult UpdatePet(PetModel pet)
         {
             petService.UpdatePet(pet.Id, pet);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult CreatePet()
+        {
+            return View(new PetModel());
+        }
+
+        public IActionResult AddPet(PetModel pet)
+        {
+            pet.Id = ObjectId.GenerateNewId().ToString();
+
+            petService.CreatePet(pet);
 
             return RedirectToAction("Index");
         }
