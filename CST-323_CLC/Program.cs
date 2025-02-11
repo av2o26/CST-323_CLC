@@ -1,13 +1,13 @@
-using CST_323_CLC.Models;
-using CST_323_CLC.Services;
+using CST_323_CLC.Services.Data_Access;
+using CST_323_CLC.Services.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<UserDatabaseSettings>(builder.Configuration.GetSection("UserDatabase"));
-builder.Services.AddSingleton<UserService>();
 builder.Services.Configure<PetDatabaseSettings>(builder.Configuration.GetSection("PetDatabase"));
-builder.Services.AddSingleton<PetService>();
+builder.Services.AddSingleton<PetDAO>();
+builder.Services.AddSingleton<UserDAO>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

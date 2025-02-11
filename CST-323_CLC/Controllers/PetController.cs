@@ -1,5 +1,6 @@
 ﻿using CST_323_CLC.Models;
-using CST_323_CLC.Services;
+using CST_323_CLC.Services.Data_Access;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 
@@ -7,9 +8,9 @@ namespace CST_323_CLC.Controllers
 {
     public class PetController : Controller
     {
-        private readonly PetService petService;
+        private readonly PetDAO petService;
 
-        public PetController(PetService petService)
+        public PetController(PetDAO petService)
         {
             this.petService = petService;
         }
