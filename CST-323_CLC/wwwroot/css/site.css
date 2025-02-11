@@ -149,3 +149,10 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
+
+.remember-forgot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}

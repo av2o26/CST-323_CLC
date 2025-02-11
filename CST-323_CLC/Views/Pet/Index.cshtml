@@ -61,7 +61,7 @@
                     @Html.DisplayFor(modelItem => item.AdoptionStatus)
                 </td>
                 <td>
-                    <p><a onclick="location.href='@Url.Action("UpdatePet", "Pet", new {id = item.Id})'">Edit</a> | <a onclick="location.href='@Url.Action("DeletePet", "Pet", new {id = item.Id})'">Delete</a></p>
+                    <p><a onclick="location.href='@Url.Action("EditPet", "Pet", new {id = item.Id})'">Edit</a> | <a onclick="location.href='@Url.Action("DeletePet", "Pet", new {id = item.Id})'">Delete</a></p>
                 </td>
             </tr>
     }

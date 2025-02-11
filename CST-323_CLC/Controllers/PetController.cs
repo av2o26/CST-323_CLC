@@ -1,4 +1,5 @@
-﻿using CST_323_CLC.Services;
+﻿using CST_323_CLC.Models;
+using CST_323_CLC.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CST_323_CLC.Controllers
@@ -23,9 +24,16 @@ namespace CST_323_CLC.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult UpdatePet(string id)
+        public IActionResult EditPet(string id)
         {
-            return View(petService.);
+            return View(petService.FindPet(id));
+        }
+
+        public IActionResult UpdatePet(PetModel pet)
+        {
+            petService.UpdatePet(pet.Id, pet);
+
+            return RedirectToAction("Index");
         }
 
     }
