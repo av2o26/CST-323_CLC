@@ -63,8 +63,7 @@
                 @Html.DisplayFor(modelItem => item.AdoptionStatus)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        <p><a onclick="location.href='@Url.Action("Index", "Register")'">Edit</a></p> | <p><a onclick="location.href='@Url.Action("Index", "Register", new {id = item.Id})'">Delete</a></p>
             </td>
         </tr>
 }

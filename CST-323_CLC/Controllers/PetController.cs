@@ -17,6 +17,16 @@ namespace CST_323_CLC.Controllers
             return View(petService.GetPets());
         }
 
-         
+        public IActionResult DeletePet(string id)
+        {
+            petService.DeletePet(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UpdatePet(string id)
+        {
+            return View(petService.GetPets().Find(pet => pet.Id == id));
+        }
+
     }
 }
