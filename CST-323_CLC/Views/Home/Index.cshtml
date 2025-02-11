@@ -2,20 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome To The Pet Shop!!</h1>
-    <div class="carousel-item">
-        <img src="~/Images/petshop.jpg" class="d-block w-100" alt="Pet Shop">
-        <h5>Pet One</h5>
-        <p></p>
+<div class="text-center stacked-btns">
+    <h1 class="header">Welcome To The Pet Shop!!</h1>
+
+    <div class="btn-center">
+         @*Dog Controller*@ 
+        <div class="stacked-btns">
+            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Index", "Pet")'">View Dogs</button>
+        </div>
+
+        @*Login Controller*@
+        <div class="stacked-btns">
+            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Index", "Login")'">Login</button>
+        </div>
+
+        @*Register Controller*@
+        <div class="stacked-btns">
+            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Index", "Register")'">Register</button>
+        </div>
     </div>
 
-    <!-- Pet Controller -->
-    <button onclick="location.href='@Url.Action("")'">View Pets</button>
-
-    <!-- Login Controller -->
-    <button onclick="location.href='@Url.Action("")'">Login</button>
-    
-    <!-- Register Controller -->
-    <button onclick="location.href='@Url.Action("")'">Register</button>
 </div>

@@ -8,22 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Services\Business\**" />
-    <Compile Remove="Services\Data Access\**" />
-    <Content Remove="Services\Business\**" />
-    <Content Remove="Services\Data Access\**" />
-    <EmbeddedResource Remove="Services\Business\**" />
-    <EmbeddedResource Remove="Services\Data Access\**" />
-    <None Remove="Services\Business\**" />
-    <None Remove="Services\Data Access\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    <PackageReference Include="MongoDB.Bson" Version="3.1.0" />
     <PackageReference Include="MongoDB.Driver" Version="3.1.0" />
   </ItemGroup>
 

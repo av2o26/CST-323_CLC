@@ -1,15 +1,15 @@
 ﻿using CST_323_CLC.Models;
-using CST_323_CLC.Services;
-using Microsoft.AspNetCore.Http;
+using CST_323_CLC.Services.Business;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CST_323_CLC.Controllers
 {
     public class PetController : Controller
     {
-        private readonly PetService petService;
+        private readonly IPetService petService;
 
-        public PetController(PetService petService)
+        public PetController(IPetService petService)
         {
             this.petService = petService;
         }
@@ -20,7 +20,7 @@ namespace CST_323_CLC.Controllers
         /// <returns>List View</returns>
         public ActionResult Index()
         {
-            return View(petService.GetPets());
+            return View(petService.GetAll());
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace CST_323_CLC.Controllers
         /// <returns>Detail View</returns>
         public ActionResult Details(string id)
         {
-            PetModel pet = petService.GetPetById(id);
+            PetModel pet = petService.GetById(id);
             return View(pet);
         }
 
@@ -55,7 +55,7 @@ namespace CST_323_CLC.Controllers
             ModelState.Remove("Id");
             if (ModelState.IsValid)
             {
-                petService.CreatePet(pet);
+                petService.Create(pet);
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -69,7 +69,7 @@ namespace CST_323_CLC.Controllers
         /// <returns>Edit View</returns>
         public ActionResult Edit(string id)
         {
-            PetModel pet = petService.GetPetById(id);
+            PetModel pet = petService.GetById(id);
             return View(pet);
         }
 
@@ -85,7 +85,7 @@ namespace CST_323_CLC.Controllers
         {
             if (ModelState.IsValid)
             {
-                petService.UpdatePet(id, pet);
+                petService.Update(id, pet);
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -93,13 +93,14 @@ namespace CST_323_CLC.Controllers
         }
 
         /// <summary>
+
         /// GET: Let user remove a pet
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Delete View</returns>
         public ActionResult Delete(string id)
         {
-            PetModel pet = petService.GetPetById(id);
+            PetModel pet = petService.GetById(id);
             return View(pet);
         }
 
@@ -114,7 +115,7 @@ namespace CST_323_CLC.Controllers
         {
             try
             {
-                petService.DeletePet(id);
+                petService.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -122,5 +123,6 @@ namespace CST_323_CLC.Controllers
                 return View();
             }
         }
+
     }
 }

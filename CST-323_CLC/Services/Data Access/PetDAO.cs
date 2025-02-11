@@ -1,10 +1,11 @@
 ﻿using CST_323_CLC.Models;
+using CST_323_CLC.Services.Utilities;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace CST_323_CLC.Services
+namespace CST_323_CLC.Services.Data_Access
 {
-    public class PetService
+    public class PetDAO : IPetDAO
     {
         private readonly IMongoCollection<PetModel> pets;
 
@@ -12,7 +13,7 @@ namespace CST_323_CLC.Services
         /// Constructor
         /// </summary>
         /// <param name="petDbSettings"></param>
-        public PetService(IOptions<PetDatabaseSettings> petDbSettings)
+        public PetDAO(IOptions<PetDatabaseSettings> petDbSettings)
         {
             MongoClient mongoClient = new MongoClient(petDbSettings.Value.ConnectionString);
             IMongoDatabase mongoDatabase = mongoClient.GetDatabase(petDbSettings.Value.DatabaseName);
