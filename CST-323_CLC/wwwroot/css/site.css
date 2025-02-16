@@ -19,7 +19,7 @@ html {
 
 body {
   margin-bottom: 0px;
-  background: url(/images/pet2.webp) no-repeat;
+  background: url(/images/pet.jpeg) no-repeat;
   background-size: cover;
   min-height: 100vh;
   align-items: center;
@@ -155,4 +155,9 @@ body {
     justify-content: center;
     align-items: center;
     font-weight: bold;
+}
+
+.format {
+    color:white;
+    font-weight:bold;
 }

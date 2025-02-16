@@ -5,11 +5,11 @@ namespace CST_323_CLC.Services.Business
 {
     public class PetService : IPetService
     {
-        private readonly IPetDAO petDao;
+        private readonly IPetDAO _petDao;
 
         public PetService(IPetDAO petDao)
         {
-            this.petDao = petDao;
+            _petDao = petDao;
         }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns>List of pets</returns>
         public List<PetModel> GetAll()
         {
-            return petDao.GetPets();
+            return _petDao.GetPets();
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns>Pet</returns>
         public PetModel GetById(string id)
         {
-            return petDao.GetPetById(id);
+            return _petDao.GetPetById(id);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns>Pet</returns>
         public PetModel Create(PetModel pet)
         {
-            return petDao.CreatePet(pet);
+            return _petDao.CreatePet(pet);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace CST_323_CLC.Services.Business
         /// <param name="pet"></param>
         public void Update(string id, PetModel pet)
         {
-            petDao.UpdatePet(id, pet);
+            _petDao.UpdatePet(id, pet);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace CST_323_CLC.Services.Business
         /// <param name="id"></param>
         public void Delete(string id)
         {
-            petDao.DeletePet(id);
+            _petDao.DeletePet(id);
         }
     }
 }

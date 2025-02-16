@@ -7,11 +7,13 @@ namespace CST_323_CLC.Controllers
 {
     public class PetController : Controller
     {
-        private readonly IPetService petService;
+        private readonly IPetService _petService;
+        private readonly IHttpContextAccessor _context;
 
-        public PetController(IPetService petService)
+        public PetController(IPetService petService, IHttpContextAccessor context)
         {
-            this.petService = petService;
+            _petService = petService;
+            _context = context;
         }
 
         /// <summary>
@@ -20,18 +22,10 @@ namespace CST_323_CLC.Controllers
         /// <returns>List View</returns>
         public ActionResult Index()
         {
-            return View(petService.GetAll());
-        }
+            if (_context.HttpContext.Session.GetString("user") == null)
+                return RedirectToAction("Login", "User");
 
-        /// <summary>
-        /// GET: Display details of a specific pet
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Detail View</returns>
-        public ActionResult Details(string id)
-        {
-            PetModel pet = petService.GetById(id);
-            return View(pet);
+            return View(_petService.GetAll());
         }
 
         /// <summary>
@@ -40,6 +34,9 @@ namespace CST_323_CLC.Controllers
         /// <returns>Create View</returns>
         public ActionResult Create()
         {
+            if (_context.HttpContext.Session.GetString("user") == null)
+                return RedirectToAction("Login", "User");
+
             return View();
         }
 
@@ -55,7 +52,7 @@ namespace CST_323_CLC.Controllers
             ModelState.Remove("Id");
             if (ModelState.IsValid)
             {
-                petService.Create(pet);
+                _petService.Create(pet);
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -69,7 +66,10 @@ namespace CST_323_CLC.Controllers
         /// <returns>Edit View</returns>
         public ActionResult Edit(string id)
         {
-            PetModel pet = petService.GetById(id);
+            if (_context.HttpContext.Session.GetString("user") == null)
+                return RedirectToAction("Login", "User");
+
+            PetModel pet = _petService.GetById(id);
             return View(pet);
         }
 
@@ -85,7 +85,7 @@ namespace CST_323_CLC.Controllers
         {
             if (ModelState.IsValid)
             {
-                petService.Update(id, pet);
+                _petService.Update(id, pet);
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -93,14 +93,16 @@ namespace CST_323_CLC.Controllers
         }
 
         /// <summary>
-
         /// GET: Let user remove a pet
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Delete View</returns>
         public ActionResult Delete(string id)
         {
-            PetModel pet = petService.GetById(id);
+            if (_context.HttpContext.Session.GetString("user") == null)
+                return RedirectToAction("Login", "User");
+
+            PetModel pet = _petService.GetById(id);
             return View(pet);
         }
 
@@ -115,7 +117,7 @@ namespace CST_323_CLC.Controllers
         {
             try
             {
-                petService.Delete(id);
+                _petService.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

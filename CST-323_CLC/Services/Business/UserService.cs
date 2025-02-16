@@ -5,11 +5,11 @@ namespace CST_323_CLC.Services.Business
 {
     public class UserService : IUserService
     {
-        private readonly IUserDAO userDao;
+        private readonly IUserDAO _userDao;
 
         public UserService(IUserDAO userDao)
         {
-            this.userDao = userDao;
+            _userDao = userDao;
         }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns></returns>
         public UserModel AddUser(UserModel user)
         {
-            return userDao.CreateUser(user);
+            return _userDao.CreateUser(user);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns></returns>
         public bool VerifyInformation(string username, string password)
         {
-            return userDao.CheckUsernameAndPass(username, password);
+            return _userDao.CheckUsernameAndPass(username, password);
         }
     }
 }

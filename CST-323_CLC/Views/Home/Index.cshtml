@@ -6,20 +6,19 @@
     <h1 class="header">Welcome To The Pet Shop!!</h1>
 
     <div class="btn-center">
-         @*Dog Controller*@ 
+        @*Register Controller*@
+        <div class="stacked-btns">
+            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Register", "User")'">Register</button>
+        </div>
+        @*Login Controller*@
+        <div class="stacked-btns">
+            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Login", "User")'">Login</button>
+        </div>
+        @*Dog Controller*@
         <div class="stacked-btns">
             <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Index", "Pet")'">View Dogs</button>
         </div>
-
-        @*Login Controller*@
-        <div class="stacked-btns">
-            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Index", "Login")'">Login</button>
-        </div>
-
-        @*Register Controller*@
-        <div class="stacked-btns">
-            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Index", "Register")'">Register</button>
-        </div>
+        
     </div>
 
 </div>

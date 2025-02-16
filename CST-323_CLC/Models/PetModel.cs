@@ -16,10 +16,6 @@ namespace CST_323_CLC.Models
         [Required]
         public string? Name { get; set; }
 
-        [BsonElement("species")]
-        [Required]
-        public string? Species { get; set; }
-
         [BsonElement("breed")]
         [Required]
         public string? Breed { get; set; }

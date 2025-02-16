@@ -9,10 +9,12 @@ namespace CST_323_CLC.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IHttpContextAccessor _context;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IHttpContextAccessor context)
         {
             _userService = userService;
+            _context = context;
         }
 
         /// <summary>
@@ -63,6 +65,7 @@ namespace CST_323_CLC.Controllers
         {
             if (_userService.VerifyInformation(user.Username, user.Password))
             {
+                _context.HttpContext.Session.SetString("user", user.Username);
                 return RedirectToAction("Index", "Pet");
             }
 

@@ -7,7 +7,7 @@ namespace CST_323_CLC.Services.Data_Access
 {
     public class PetDAO : IPetDAO
     {
-        private readonly IMongoCollection<PetModel> pets;
+        private readonly IMongoCollection<PetModel> _pets;
 
         /// <summary>
         /// Constructor
@@ -17,7 +17,7 @@ namespace CST_323_CLC.Services.Data_Access
         {
             MongoClient mongoClient = new MongoClient(petDbSettings.Value.ConnectionString);
             IMongoDatabase mongoDatabase = mongoClient.GetDatabase(petDbSettings.Value.DatabaseName);
-            pets = mongoDatabase.GetCollection<PetModel>(petDbSettings.Value.CollectionName);
+            _pets = mongoDatabase.GetCollection<PetModel>(petDbSettings.Value.CollectionName);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace CST_323_CLC.Services.Data_Access
         /// <returns>List of pets</returns>
         public List<PetModel> GetPets()
         {
-            return pets.Find(pet => true).ToList();
+            return _pets.Find(pet => true).ToList();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace CST_323_CLC.Services.Data_Access
         /// <returns>One pet</returns>
         public PetModel GetPetById(string id)
         {
-            return pets.Find(pet => pet.Id == id).FirstOrDefault();
+            return _pets.Find(pet => pet.Id == id).FirstOrDefault();
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace CST_323_CLC.Services.Data_Access
         /// <returns></returns>
         public PetModel CreatePet(PetModel pet)
         {
-            pets.InsertOne(pet);
+            _pets.InsertOne(pet);
             return pet;
         }
 
@@ -57,7 +57,7 @@ namespace CST_323_CLC.Services.Data_Access
         /// <param name="pet"></param>
         public void UpdatePet(string id, PetModel pet)
         {
-            pets.ReplaceOne(pet => pet.Id == id, pet);
+            _pets.ReplaceOne(pet => pet.Id == id, pet);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace CST_323_CLC.Services.Data_Access
         /// <param name="id"></param>
         public void DeletePet(string id)
         {
-            pets.DeleteOne(pet => pet.Id == id);
+            _pets.DeleteOne(pet => pet.Id == id);
         }
     }
 }
