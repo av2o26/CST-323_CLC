@@ -16,9 +16,6 @@
                         @Html.DisplayNameFor(model => model.Name)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Species)
-                    </th>
-                    <th>
                         @Html.DisplayNameFor(model => model.Breed)
                     </th>
                     <th>
@@ -33,12 +30,9 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr>
-                        <td>
+                <tr>
+                    <td>
                         @Html.DisplayFor(model => model.Name)
-                    </td>
-                        <td>
-                        @Html.DisplayFor(model => model.Species)
                     </td>
                         <td>
                         @Html.DisplayFor(model => model.Breed)
@@ -58,17 +52,11 @@
     </div>
 
     <div class="register-wrapper">
-
-        <form method="post" id="updatePet" action="@Url.Action("UpdatePet", "Pet")">
-
+        <form asp-action="Edit">
             <input type="hidden" name="Id" value="@Model.Id"/>
 
             <div class="input-box">
                 <input type="text" asp-for="Name" placeholder="Name" required/>
-            </div>
-
-            <div class="input-box">
-                <input type="text" asp-for="Species" placeholder="Species" required />
             </div>
 
             <div class="input-box">
