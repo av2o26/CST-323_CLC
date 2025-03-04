@@ -1,6 +1,7 @@
 using CST_323_CLC.Services.Business;
 using CST_323_CLC.Services.Data_Access;
 using CST_323_CLC.Services.Utilities;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,3 +49,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
