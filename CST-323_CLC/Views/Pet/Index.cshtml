@@ -55,7 +55,8 @@
                     @Html.DisplayFor(modelItem => item.AdoptionStatus)
                 </td>
                 <td>
-                    <p><a onclick="location.href='@Url.Action("EditPet", "Pet", new {id = item.Id})'">Edit</a> | <a onclick="location.href='@Url.Action("DeletePet", "Pet", new {id = item.Id})'">Delete</a></p>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             </tr>
     }
@@ -63,7 +64,7 @@
     </table>
 
             <div class="stacked-btns">
-            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("CreatePet", "Pet")'">Create New</button>
+            <button class="stacked-button btn-text btn text-black" onclick="location.href='@Url.Action("Create", "Pet")'">Create New</button>
             </div>
     </div>
 </div>

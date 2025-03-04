@@ -59,7 +59,7 @@
 
     <div class="register-wrapper">
 
-        <form method="post" id="updatePet" action="@Url.Action("UpdatePet", "Pet")">
+        <form asp-action="Edit">
 
             <input type="hidden" name="Id" value="@Model.Id"/>
 

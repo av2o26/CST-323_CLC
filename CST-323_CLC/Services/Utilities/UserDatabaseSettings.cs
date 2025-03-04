@@ -1,6 +1,6 @@
-﻿namespace CST_323_CLC.Models
+﻿namespace CST_323_CLC.Services.Utilities
 {
-    public class PetDatabaseSettings
+    public class UserDatabaseSettings
     {
         public string ConnectionString { get; set; } = null!;
         public string DatabaseName { get; set; } = null!;

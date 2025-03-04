@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace CST_323_CLC.Models
@@ -9,45 +10,32 @@ namespace CST_323_CLC.Models
         // Propeties
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [BsonElement("name")]
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [BsonElement("species")]
         [Required]
-        public string Species { get; set; }
+        public string? Species { get; set; }
 
         [BsonElement("breed")]
         [Required]
-        public string Breed { get; set; }
+        public string? Breed { get; set; }
 
         [BsonElement("description")]
         [Required]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [BsonElement("price")]
+        [DataType(DataType.Currency)]
         [Required]
         public double Price { get; set; }
 
         [BsonElement("isAdopted")]
+        [DisplayName("Available?")]
         [Required]
         public bool AdoptionStatus { get; set; }
-
-        public PetModel(string id, string name, string species, string breed, string description, double price, bool adoptionStatus)
-        {
-            Id = id;
-            Name = name;
-            Species = species;
-            Breed = breed;
-            Description = description;
-            Price = price;
-            AdoptionStatus = adoptionStatus;
-        }
-
-        public PetModel()
-        {
-        }
     }
 }
