@@ -1,0 +1,22 @@
+﻿
+
+<div class="text-center stacked-btns">
+    <h1 class="header">Welome Back! Please Login</h1>
+    
+    <div class="btn-center">
+        <form method="post" action="@Url.Action("CheckCredentials", "User")">
+            <div class="input-box">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" >
+            </div>
+            <div class="input-box">
+                <input type="text" class="form-control" id="password" name="password" placeholder="Password" >
+            </div>
+            <div class="stacked-btns">
+                <button type="submit" class="stacked-button btn-text btn text-black">Login</button>
+            </div>
+            <div class="register-link">
+                <p>Don't have an account? <a onclick="location.href='@Url.Action("Register", "User")'"> Register </a></p>
+            </div>
+        </form>
+    </div>
+</div>

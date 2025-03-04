@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Business\**" />
+    <Compile Remove="Services\Data Access\**" />
+    <Content Remove="Services\Business\**" />
+    <Content Remove="Services\Data Access\**" />
+    <EmbeddedResource Remove="Services\Business\**" />
+    <EmbeddedResource Remove="Services\Data Access\**" />
+    <None Remove="Services\Business\**" />
+    <None Remove="Services\Data Access\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
