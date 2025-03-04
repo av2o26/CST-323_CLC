@@ -4,28 +4,24 @@
     ViewData["Title"] = "Login";
 }
 
+
+<div class="text-center stacked-btns">
+
 <h1 class="header">Login</h1>
-
-
-<div class="row">
-    <div class="stacked-btns">
+    <div class="register-wrapper">
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="stacked-btns">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
+            <div class="input-box">
+                <input asp-for="Username" placeholder="Username" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
-            <br />
-            <div class="stacked-btns">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+            
+            <div class="input-box">
+                <input asp-for="Password" placeholder="Password"/>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <br />
-            <br />
-            <div class="btn-center">
-                <input type="submit" value="Log in" class="btn btn-primary" />
+            <div class="stacked-btns">
+                <input type="submit" value="Log in" class="stacked-button btn-text btn text-black" />
             </div>
         </form>
     </div>
