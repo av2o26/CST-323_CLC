@@ -5,13 +5,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>CST_323_CLC</RootNamespace>
-<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
     <SelfContained>false</SelfContained>
     <PublishDir>bin/publish/</PublishDir>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
-<DisableScopedCss>true</DisableScopedCss>
+    <DisableScopedCss>true</DisableScopedCss>
+</PropertyGroup>
 
-  </PropertyGroup>
 
 
 
