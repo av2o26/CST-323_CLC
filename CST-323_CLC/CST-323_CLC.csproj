@@ -9,6 +9,8 @@
     <SelfContained>false</SelfContained>
     <PublishDir>bin/publish/</PublishDir>
     <EnableDefaultContentItems>false</EnableDefaultContentItems>
+<DisableScopedCss>true</DisableScopedCss>
+
   </PropertyGroup>
 
 
@@ -18,6 +20,8 @@
     <PackageReference Include="MongoDB.Bson" Version="3.1.0" />
     <PackageReference Include="MongoDB.Driver" Version="3.1.0" />
     <Content Include="wwwroot\**\*" CopyToOutputDirectory="PreserveNewest" />
+<None Include="Views/Shared/_Layout.cshtml.css" />
+
   </ItemGroup>
 
 </Project>
