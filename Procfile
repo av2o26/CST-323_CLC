@@ -1,1 +1,1 @@
-﻿web: dotnet CST-323_CLC.dll
+﻿web: dotnet bin/publish/CST-323_CLC.dll
