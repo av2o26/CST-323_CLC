@@ -21,6 +21,7 @@
     <PackageReference Include="MongoDB.Driver" Version="3.1.0" />
     <Content Include="wwwroot\**\*" CopyToOutputDirectory="PreserveNewest" />
         <EmbeddedResource Include="Views/**/*.cshtml" />
+    <Content Include="Views/**/*.cshtml" CopyToOutputDirectory="PreserveNewest" />
 
   </ItemGroup>
 
