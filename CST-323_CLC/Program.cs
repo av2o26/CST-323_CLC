@@ -25,6 +25,11 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(5);
 });
 
+// Get the port from the Heroku environment variable, default to 5000 if not set
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+builder.WebHost.UseUrls("http://*:" + port);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
