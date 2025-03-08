@@ -1,1 +1,1 @@
-web: dotnet CLC-323_CLC.dll
+web: CST-323_CLC/bin/publish; ./CST-323_CLC --urls http://*:$PORT
