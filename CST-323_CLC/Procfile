@@ -1,1 +1,1 @@
-web: CST-323_CLC/bin/publish; ./CST-323_CLC --urls http://*:$PORT
+web: $HOME/heroku_output && ./CST-323_CLC
