@@ -1,15 +1,18 @@
-﻿using CST_323_CLC.Models;
+using CST_323_CLC.Models;
 using CST_323_CLC.Services.Data_Access;
+using Microsoft.Extensions.Logging;
 
 namespace CST_323_CLC.Services.Business
 {
     public class PetService : IPetService
     {
         private readonly IPetDAO _petDao;
+        private readonly ILogger<PetService> _logger;
 
-        public PetService(IPetDAO petDao)
+        public PetService(IPetDAO petDao, ILogger<PetService> logger)
         {
             _petDao = petDao;
+            _logger = logger;
         }
 
         /// <summary>
@@ -18,6 +21,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns>List of pets</returns>
         public List<PetModel> GetAll()
         {
+            _logger.LogInformation("PetService.GetAll() called");
             return _petDao.GetPets();
         }
 
@@ -28,6 +32,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns>Pet</returns>
         public PetModel GetById(string id)
         {
+            _logger.LogInformation("PetService.GetById() called with ID: {PetId}", id);
             return _petDao.GetPetById(id);
         }
 
@@ -38,6 +43,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns>Pet</returns>
         public PetModel Create(PetModel pet)
         {
+            _logger.LogInformation("PetService.Create() called for pet: {PetName}", pet.Name);
             return _petDao.CreatePet(pet);
         }
 
@@ -48,6 +54,7 @@ namespace CST_323_CLC.Services.Business
         /// <param name="pet"></param>
         public void Update(string id, PetModel pet)
         {
+            _logger.LogInformation("PetService.Update() called for Pet ID: {PetId}", id);
             _petDao.UpdatePet(id, pet);
         }
 
@@ -57,6 +64,7 @@ namespace CST_323_CLC.Services.Business
         /// <param name="id"></param>
         public void Delete(string id)
         {
+            _logger.LogInformation("PetService.Delete() called for Pet ID: {PetId}", id);
             _petDao.DeletePet(id);
         }
     }
