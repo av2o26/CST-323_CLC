@@ -1,15 +1,18 @@
-﻿using CST_323_CLC.Models;
+using CST_323_CLC.Models;
 using CST_323_CLC.Services.Data_Access;
+using Microsoft.Extensions.Logging;
 
 namespace CST_323_CLC.Services.Business
 {
     public class UserService : IUserService
     {
         private readonly IUserDAO _userDao;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(IUserDAO userDao)
+        public UserService(IUserDAO userDao, ILogger<UserService> logger)
         {
             _userDao = userDao;
+            _logger = logger;
         }
 
         /// <summary>
@@ -19,6 +22,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns></returns>
         public UserModel AddUser(UserModel user)
         {
+            _logger.LogInformation("UserService.AddUser() called for username: {Username}", user.Username);
             return _userDao.CreateUser(user);
         }
 
@@ -30,6 +34,7 @@ namespace CST_323_CLC.Services.Business
         /// <returns></returns>
         public bool VerifyInformation(string username, string password)
         {
+            _logger.LogInformation("UserService.VerifyInformation() called for username: {Username}", username);
             return _userDao.CheckUsernameAndPass(username, password);
         }
     }
