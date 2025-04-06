@@ -9,7 +9,6 @@ builder.Services.Configure<UserDatabaseSettings>(builder.Configuration.GetSectio
 builder.Services.Configure<PetDatabaseSettings>(builder.Configuration.GetSection("PetDatabase"));
 
 // Dependency Injection
-
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserDAO, UserDAO>();
 builder.Services.AddScoped<IPetService, PetService>();
