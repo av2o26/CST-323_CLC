@@ -20,7 +20,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession(options =>
 {
     // Logout after 5 minutes of idle time
-    options.IdleTimeout = TimeSpan.FromMinutes(5);
+    options.IdleTimeout = TimeSpan.FromMinutes(1);
 });
 
 var app = builder.Build();
