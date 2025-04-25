@@ -6,9 +6,15 @@ namespace CST_323_CLC.Services.Business
 {
     public class UserService : IUserService
     {
+        // Services
         private readonly IUserDAO _userDao;
         private readonly ILogger<UserService> _logger;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="userDao"></param>
+        /// <param name="logger"></param>
         public UserService(IUserDAO userDao, ILogger<UserService> logger)
         {
             _userDao = userDao;

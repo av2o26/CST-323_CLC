@@ -10,6 +10,7 @@ namespace CST_323_CLC.Services.Data_Access
 {
     public class UserDAO : IUserDAO
     {
+        // Services
         private readonly IMongoCollection<UserModel> users;
         private readonly ILogger<UserDAO> _logger;
 

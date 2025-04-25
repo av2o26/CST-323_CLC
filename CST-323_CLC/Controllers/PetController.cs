@@ -9,10 +9,17 @@ namespace CST_323_CLC.Controllers
 {
     public class PetController : Controller
     {
+        // Services
         private readonly IPetService _petService;
         private readonly IHttpContextAccessor _context;
         private readonly ILogger<PetController> _logger;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="petService"></param>
+        /// <param name="context"></param>
+        /// <param name="logger"></param>
         public PetController(IPetService petService, IHttpContextAccessor context, ILogger<PetController> logger)
         {
             _petService = petService;

@@ -8,6 +8,7 @@ namespace CST_323_CLC.Services.Data_Access
 {
     public class PetDAO : IPetDAO
     {
+        // Services
         private readonly IMongoCollection<PetModel> _pets;
         private readonly ILogger<PetDAO> _logger;
 

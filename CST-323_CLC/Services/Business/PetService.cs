@@ -6,9 +6,15 @@ namespace CST_323_CLC.Services.Business
 {
     public class PetService : IPetService
     {
+        // Services
         private readonly IPetDAO _petDao;
         private readonly ILogger<PetService> _logger;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="petDao"></param>
+        /// <param name="logger"></param>
         public PetService(IPetDAO petDao, ILogger<PetService> logger)
         {
             _petDao = petDao;
